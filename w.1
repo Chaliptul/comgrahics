@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title> Raster Graphics </title>
+    </head>
+    <body>
+        Hello world!!
+        <canvas id="canvas" width="200" height="200"
+style="width:500px; height:500px; border:1px solid #000; image-rendering: pixelated;">
+</canvas>
+
+<script>
+const canvas = document.getElementById('canvas'); 
+const ctx = canvas.getContext('2d'); 
+const imageData = ctx.createImageData(canvas.width, canvas.height); //สร้างรูปภาพจากที่กำหนดไว้ข้างบน
+const pixels = imageData.data; // Array of color [R,G,B,A, R,G,B,A, ...] //นำเข้า imagedata ให้เข้าถึง 
+
+pixels [0+4*0] = 255; //Red
+pixels [1+4*0] = 0; //Green
+pixels [2+4*0] = 0; //Blue
+pixels [3+4*0] = 255; //Alpha
+
+pixels [0+4*1] = 0; //Red
+pixels [1+4*1] = 255; //Green
+pixels [2+4*1] = 0; //Blue
+pixels [3+4*1] = 255; //Alpha
+
+
+pixels [0+4*2] = 0; //Red 
+pixels [1+4*2] = 0; //Green
+pixels [2+4*2] = 255; //Blue
+pixels [3+4*2] = 255; //Alpha
+
+
+ctx.putImageData(imageData, 0, 0);
+</script>
+
+    </body>
+</html>
+
+
+
+
+<html>
+    <head>
+        <title> Raster Graphics </title>
+    </head>
+    <body>
+        Hello world!!
+        <canvas id="canvas" width="200" height="200"
+style="width:500px; height:500px; border:1px solid #000; image-rendering: pixelated;">
+</canvas>
+
+<script>
+const canvas = document.getElementById('canvas'); 
+const ctx = canvas.getContext('2d'); 
+const imageData = ctx.createImageData(canvas.width, canvas.height); //สร้างรูปภาพจากที่กำหนดไว้ข้างบน
+const pixels = imageData.data; // Array of color [R,G,B,A, R,G,B,A, ...] //นำเข้า imagedata ให้เข้าถึง 
+
+
+function putPixel(x,y,r,g,b,a = 255){
+    const index = (y*canvas.width + x)*4;
+    pixels[index] = r;
+    pixels[index+1] = g;
+    pixels[index+2] = b;
+    pixels[index+3] = a;
+}
+
+
+
+
+for(let i = 0; i < 200; i++){
+    putPixel (i,i,0,0,0,255)
+}
+
+putPixel(0,0,0,0,0,255);
+putPixel(1,1,0,0,0,255);
+
+
+
+ctx.putImageData(imageData, 0, 0);
+</script>
+
+    </body>
+</html>
+
+
+
+
+
+
